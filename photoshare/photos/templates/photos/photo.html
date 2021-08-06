@@ -21,9 +21,8 @@
                 <a href="{% url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
 
                 <div style="height: 90vh;">
-                    <img style="max-width: 100%; max-height: 100%;"
-                         src="https://www.si.com/.image/t_share/MTY4MDA3OTIzNjQyMzQ0NzIx/rubbing-baseballjpg.jpg">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <img style="max-width: 100%; max-height: 100%;" src="{{photo.image.url}}">
+                    <p>{{photo.description}}</p>
                 </div>
             </div>
         </div>

@@ -33,10 +33,9 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">All</li>
-                    <li class="list-group-item">Travel</li>
-                    <li class="list-group-item">Food</li>
-                    <li class="list-group-item">Sport</li>
-                    <li class="list-group-item">Me & You</li>
+                    {% for category in categories %}
+                    <li class="list-group-item">{{category.name}}</li>
+                    {% endfor %}
 
                     <li class="list-group-item">
                         <a href="{% url 'add' %}" class="btn btn-dark d-md-block btn-sm m-1">Add Photo</a>
@@ -48,57 +47,20 @@
         <div class="col-md-9">
             <div class="row">
 
+                {% for photo in photos %}
                 <div class="col-md-4">
                     <div class="card my-2">
-                        <img class="image-thumbnail"
-                             src="https://www.si.com/.image/t_share/MTY4MDA3OTIzNjQyMzQ0NzIx/rubbing-baseballjpg.jpg"
-                             alt="Card image cap">
+                        <img class="image-thumbnail" src="{{photo.image.url}}" alt="Card image cap">
 
                         <div class="card-body">
-                            <small>Category: Sports</small>
+                            <small>Category: {{photo.category.name}}</small>
                         </div>
-                        <a href="{% url 'photo' 1 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                        <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="card my-2">
-                        <img class="image-thumbnail"
-                             src="https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2018/01/thumb_720_450_dreamstime_xl_36364942.jpg"
-                             alt="Card image cap">
-
-                        <div class="card-body">
-                            <small>Category: Sports</small>
-                        </div>
-                        <a href="{% url 'photo' 2 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card my-2">
-                        <img class="image-thumbnail"
-                             src="https://www.uoflnews.com/wp-content/uploads/2018/06/baseball-generic-shot.jpg"
-                             alt="Card image cap">
-
-                        <div class="card-body">
-                            <small>Category: Sports</small>
-                        </div>
-                        <a href="{% url 'photo' 3 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card my-2">
-                        <img class="image-thumbnail"
-                             src="https://www.history.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc4NjAyOTkyNTI2NjY1/ask-history-who-invented-baseball-2.jpg"
-                             alt="Card image cap">
-
-                        <div class="card-body">
-                            <small>Category: Sports</small>
-                        </div>
-                        <a href="{% url 'photo' 4 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
-                    </div>
-                </div>
+                {% empty %}
+                <h3>No photos...</h3>
+                {% endfor %}
 
             </div>
         </div>
