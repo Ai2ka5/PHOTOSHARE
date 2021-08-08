@@ -17,6 +17,11 @@
             object-fit: cover;
         }
 
+        .list-group-item a {
+            text-decoration: none;
+            color: black;
+        }
+
 
     </style>
 </head>
@@ -43,7 +48,7 @@
                     </li>
                     {% endfor %}
 
-                    <li class="list-group-item">
+                    <li class="list-group">
                         <a href="{% url 'add' %}" class="btn btn-dark d-md-block btn-sm m-1">Add Photo</a>
                     </li>
                 </ul>
